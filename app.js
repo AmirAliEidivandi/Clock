@@ -13,3 +13,22 @@ setInterval(() => {
     mn.style.transform = `rotateZ(${mm}deg)`;
     sc.style.transform = `rotateZ(${ss}deg)`;
 });
+
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+themeToggle.addEventListener("click", () => {
+    body.classList.toggle("light-mode");
+    // Store preference in local storage
+    if (body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+    } else {
+        localStorage.setItem("theme", "dark");
+    }
+});
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light") {
+    body.classList.add("light-mode");
+}
